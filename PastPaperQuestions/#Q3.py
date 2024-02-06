@@ -44,7 +44,7 @@ def Dequeue():
 
 
 for x in range(11):
-    UserInput = input("Pleease enter a string value: ")
+    UserInput = input("Please enter a string value: ")
     if Enqueue(UserInput):
         print("Enqueue was successful")
     else:
