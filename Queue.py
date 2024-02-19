@@ -3,6 +3,7 @@ Queue = [" " for i in range(50)] #Stores 50 IDs of type STRING
 HeadPointer = -1
 TailPointer = 0
 
+
 def Enqueue(IDs):
     global HeadPointer
     global TailPointer
@@ -18,7 +19,7 @@ def Enqueue(IDs):
     HeadPointer += 1
     return True
 
-def Dequeue(DTR):
+def Dequeue():
     global HeadPointer
     global TailPointer
     global Queue
@@ -42,18 +43,19 @@ def ReadData():
 
 class RecordData:
     def __init__(self, ID, Total):
-        self.__ID = ID #String to store game ID
-        self.__Total = Total #Total number of times a game ID appears in the text file
+        self.ID = ID #String to store game ID
+        self.Total = Total #Total number of times a game ID appears in the text file
 
-global Records, NumberRecords
+global NumberRecords
 Records = [] #Stores up to 50 items of type RecordData
 NumberRecords = 0 #Stoes the number currently in the array Records
 
 def TotalData():
-    global Records, NumberRecords, Flag
-    DataAccessed = ""
+    global Records
+    global NumberRecords
+    global Flag
     Flag = True
-    DataAccessed = Dequeue(DataAccessed)
+    DataAccessed = Dequeue()
     if NumberRecords == 0:
         Records[NumberRecords].ID = DataAccessed
         Records[NumberRecords].Total = 1
@@ -69,3 +71,13 @@ def TotalData():
         Records[NumberRecords].ID = DataAccessed
         Records[NumberRecords].Total = 1
         NumberRecords += 1
+
+def OutputRecords():
+    global Records
+    global NumberRecords
+    for x in range(0, NumberRecords):
+        print(f"ID {Records[x].ID} Total {Records[x].Total}")
+
+ReadData()
+TotalData()
+OutputRecords()
