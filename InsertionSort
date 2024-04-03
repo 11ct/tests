@@ -1,0 +1,30 @@
+list = [9,7,4,6,2,8,3,1,5]
+
+def insertionsort(array):
+    for i in range(1, len(array)):
+        item = array[i]
+        x = i - 1
+
+        while x >= 0  and item < array[x]:
+            array[x+1] = array[x]
+            x = x - 1
+        array[x+1] = item
+insertionsort(list)
+print(list)
+
+"""
+DECLARE list: ARRAY[1:10] OF INTEGER
+DECLARE item: INTEGER
+DECLARE x: INTEGER
+
+FUNCTION insertionsort(array:INTEGER) RETURNS INTEGER
+    FOR i <- 2 TO 10
+        item <- list[i]
+        x <- i - 1
+
+        WHILE x >= 1 AND item < list[x]
+            list[x+1] <- list[x]
+            x <- x - 1
+        array[x+1] <- item
+
+"""
